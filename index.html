@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CUBE CSS Design System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A comprehensive CSS methodology that focuses on Composition, Utility, Block, and Exception principles for building scalable and maintainable stylesheets." />
+    <script type="module" src="src/main.js" defer></script>
+  </head>
+  <body>
+    <main class="wrapper prose">
+      <header class="repel">
+        <a href="index.html" aria-current="page" class="text-step-3/fine text-dark no-underline font-bold">CUBE CSS Design System</a>
+        <nav aria-label="Main navigation">
+          <ul role="list" class="cluster [--gutter:var(--spacing-xs)] p-0">
+            <li><a href="compositions.html">Compositions</a></li>
+            <li><a href="blocks.html">Blocks</a></li>
+            <li><a href="utilities.html">Utilities</a></li>
+            <li><a href="theme.html">Theme</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+      <section class="flow region" aria-labelledby="welcome-heading">
+        <h2 id="welcome-heading">Welcome to CUBE CSS</h2>
+        <p>A comprehensive CSS methodology that focuses on Composition, Utility, Block, and Exception (CUBE) principles for building scalable and maintainable stylesheets. <a href="https://cube.fyi/" aria-label="Read the flipping manual">RTFM</a></p>
+        
+        <h2 id="explore-heading">Explore the System</h2>
+        <div class="grid [--grid-min-item-size:min(20rem,100%)]">
+          <article aria-labelledby="compositions-heading">
+            <h3 id="compositions-heading"><a href="compositions.html">Compositions</a></h3>
+            <p>Flexible, component-agnostic layout systems that support as many variants of content as possible</p>
+          </article>
+          <article aria-labelledby="blocks-heading">
+            <h3 id="blocks-heading"><a href="blocks.html">Blocks</a></h3>
+            <p>Skeletal component and organisational structures like buttons and cards.</p>
+          </article>
+          <article aria-labelledby="utilities-heading">
+            <h3 id="utilities-heading"><a href="utilities.html">Utilities</a></h3>
+            <p>Single-purpose classes for specific styling tasks &mdash; one job done well.</p>
+          </article>
+          <article aria-labelledby="theme-heading">
+            <h3 id="theme-heading"><a href="theme.html">Theme</a></h3>
+            <p>Design tokens that provide consistency across your project.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

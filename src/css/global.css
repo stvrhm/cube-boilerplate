@@ -1,0 +1,43 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+/* @import "tailwindcss/preflight.css" layer(base); we use our own css reset */
+
+@theme {
+    /* Remove Tailwind defaults */
+    --color-*: initial;
+    --spacing-*: initial;
+    --breakpoint-*: initial;
+    --font-*: initial;
+    --font-weight-*: initial;
+    --text-*: initial;
+    --leading-*: initial;
+
+    --spacing-gutter: var(--gutter);
+}
+
+@import "./theme.css" layer(theme);
+
+@import "./global/reset.css" layer(base);
+@import "./global/fonts.css" layer(base);
+
+@import "./global/variables.css" layer(base);
+@import "./global/global-styles.css" layer(base);
+
+@import "./compositions/flow.css" layer(components);
+@import "./compositions/cluster.css" layer(components);
+@import "./compositions/grid.css" layer(components);
+@import "./compositions/sidebar.css" layer(components);
+@import "./compositions/switcher.css" layer(components);
+@import "./compositions/wrapper.css" layer(components);
+@import "./compositions/repel.css" layer(components);
+
+@import "./blocks/prose.css" layer(components);
+@import "./blocks/button.css" layer(components);
+
+/* Custom utilities that will automatically be placed in the utilities layer */
+@import "./utilities/region.css";
+@import "./utilities/hyphens.css";
+@import "./utilities/wrap.css";
+
+@import "tailwindcss/utilities.css" layer(utilities);

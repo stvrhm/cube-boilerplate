@@ -1,0 +1,7 @@
+/* 
+REGION UTILITY
+Consistent block padding for page sections
+*/
+@utility region {
+	padding-block: var(--region-space, var(--spacing-xl-2xl));
+}

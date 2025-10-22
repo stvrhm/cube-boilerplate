@@ -10,8 +10,8 @@
 		<script type="module" src="src/main.ts" defer></script>
 	</head>
 	<body>
-		<main class="wrapper prose">
-			<header class="repel">
+		<main class="wrapper">
+			<header class="repel py-s">
 				<a
 					href="index.html"
 					aria-current="page"
@@ -38,10 +38,14 @@
 						>RTFM</a
 					>
 				</p>
-
+			</section>
+			<section class="flow" aria-labelledby="explore-heading">
 				<h2 id="explore-heading">Explore the System</h2>
 				<div class="grid [--grid-min-item-size:min(20rem,100%)]">
-					<article aria-labelledby="compositions-heading">
+					<article
+						class="flow border-primary p-s rounded border-2"
+						aria-labelledby="compositions-heading"
+					>
 						<h3 id="compositions-heading">
 							<a href="compositions.html">Compositions</a>
 						</h3>
@@ -50,14 +54,20 @@
 							variants of content as possible
 						</p>
 					</article>
-					<article aria-labelledby="blocks-heading">
+					<article
+						class="flow border-primary p-s rounded border-2"
+						aria-labelledby="blocks-heading"
+					>
 						<h3 id="blocks-heading"><a href="blocks.html">Blocks</a></h3>
 						<p>
 							Skeletal component and organisational structures like buttons and
 							cards.
 						</p>
 					</article>
-					<article aria-labelledby="utilities-heading">
+					<article
+						class="flow border-primary p-s rounded border-2"
+						aria-labelledby="utilities-heading"
+					>
 						<h3 id="utilities-heading">
 							<a href="utilities.html">Utilities</a>
 						</h3>
@@ -66,7 +76,10 @@
 							done well.
 						</p>
 					</article>
-					<article aria-labelledby="theme-heading">
+					<article
+						class="flow border-primary p-s rounded border-2"
+						aria-labelledby="theme-heading"
+					>
 						<h3 id="theme-heading"><a href="theme.html">Theme</a></h3>
 						<p>Design tokens that provide consistency across your project.</p>
 					</article>

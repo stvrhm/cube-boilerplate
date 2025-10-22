@@ -10,8 +10,8 @@
 		<script type="module" src="src/main.ts" defer></script>
 	</head>
 	<body>
-		<main class="wrapper prose">
-			<header class="repel">
+		<main class="wrapper">
+			<header class="repel py-s">
 				<a
 					href="index.html"
 					class="text-step-3/fine text-dark font-bold no-underline"
@@ -35,52 +35,61 @@
 				</p>
 			</section>
 
-			<!-- REGION UTILITY -->
-			<section class="flow region" aria-labelledby="region-heading">
-				<h2 id="region-heading">Region Utility</h2>
-				<p>
-					The region utility provides consistent block padding for page
-					sections. It applies padding-block using the --region-space custom
-					property.
-				</p>
+			<section class="flow [--flow-space:var(--spacing-l)]">
+				<div>
+					<!-- REGION UTILITY -->
+					<section
+						class="flow [--flow-space:1em]"
+						aria-labelledby="region-heading"
+					>
+						<h2 id="region-heading">Region Utility</h2>
+						<p>
+							The region utility provides consistent block padding for page
+							sections. It applies padding-block using the --region-space custom
+							property.
+						</p>
 
-				<div class="region bg-primary text-light rounded">
-					<h3 class="mt-0">Region Section Example</h3>
-					<p>
-						This section uses the region utility for consistent vertical
-						padding. The region utility creates consistent spacing for page
-						sections and helps maintain visual rhythm throughout the design.
-					</p>
-					<p>
-						Notice how the padding is applied to the top and bottom (block
-						direction) of this element, creating consistent section spacing.
-					</p>
-				</div>
-			</section>
-
-			<!-- REGION CUSTOMIZATION -->
-			<section
-				class="flow region [&_h3]:mt-0"
-				aria-labelledby="customization-heading"
-			>
-				<h2 id="customization-heading">Customizing Region Spacing</h2>
-				<p>
-					You can customize the region utility by overriding the --region-space
-					custom property:
-				</p>
-
-				<div
-					class="region bg-light border-primary rounded border-2 [--region-space:var(--spacing-s)]"
-				>
-					<h3>Small Region Spacing</h3>
-					<p>This region uses smaller spacing.</p>
+						<div class="region bg-primary text-light rounded">
+							<h3>Region Section Example</h3>
+							<p>
+								This section uses the region utility for consistent vertical
+								padding. The region utility creates consistent spacing for page
+								sections and helps maintain visual rhythm throughout the design.
+							</p>
+							<p>
+								Notice how the padding is applied to the top and bottom (block
+								direction) of this element, creating consistent section spacing.
+							</p>
+						</div>
+					</section>
 				</div>
 
-				<div
-					class="region bg-light border-primary rounded border-2 [--region-space:var(--spacing-3xl)]"
-				>
-					<h3>Large Region Spacing</h3>
-					<p>This region uses larger spacing.</p>
+				<div>
+					<!-- REGION CUSTOMIZATION -->
+					<section
+						class="flow [--flow-space:1em]"
+						aria-labelledby="customization-heading"
+					>
+						<h2 id="customization-heading">Customizing Region Spacing</h2>
+						<p>
+							You can customize the region utility by overriding the
+							--region-space custom property:
+						</p>
+
+						<div
+							class="region bg-light border-primary rounded border-2 [--region-space:var(--spacing-s)]"
+						>
+							<h3>Small Region Spacing</h3>
+							<p>This region uses smaller spacing.</p>
+						</div>
+
+						<div
+							class="region bg-light border-primary rounded border-2 [--region-space:var(--spacing-3xl)]"
+						>
+							<h3>Large Region Spacing</h3>
+							<p>This region uses larger spacing.</p>
+						</div>
+					</section>
 				</div>
 			</section>
 		</main>

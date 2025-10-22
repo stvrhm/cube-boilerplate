@@ -6,11 +6,7 @@ import clampGenerator from './clamp-generator.ts'
 import { TokenSchema } from './schema.ts'
 import tokensToTailwind from './tokens-to-tailwind.ts'
 import { type AllTokens, DEFAULT_ROOT_SIZE } from './types.ts'
-import {
-	getDefaultTokensDir,
-	parseFile,
-	type TokensDir,
-} from './validation.ts'
+import { getDefaultTokensDir, parseFile, type TokensDir } from './validation.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

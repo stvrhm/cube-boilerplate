@@ -1,1 +1,1 @@
-import "./css/global.css"
+import './css/global.css'

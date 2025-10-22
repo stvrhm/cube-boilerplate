@@ -5,7 +5,14 @@
 		{
 			"name": "Base",
 			"description": "System fonts for body copy and globally set text.",
-			"value": ["Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
+			"value": [
+				"Inter",
+				"Segoe UI",
+				"Roboto",
+				"Helvetica Neue",
+				"Arial",
+				"sans-serif"
+			]
 		}
 	]
 }

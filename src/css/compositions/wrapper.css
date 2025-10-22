@@ -3,6 +3,6 @@ WRAPPER COMPOSITION
 A common wrapper/container
 */
 .wrapper {
-	@apply relative mx-auto px-gutter;
+	@apply px-gutter relative mx-auto;
 	max-width: clamp(16rem, var(--wrapper-max-width, 100vw), 80rem);
 }

@@ -1,7 +1,13 @@
-import viewports from "../design-tokens/viewports.json" with { type: "json" }
+import viewports from '@/design-tokens/viewports.json' with { type: 'json' }
 
-function clampGenerator(tokens, rootSize = 16) {
-	return tokens.map(({ name, min, max }) => {
+interface Token {
+	name: string
+	min: number
+	max: number
+}
+
+function clampGenerator(tokens: Token[], rootSize = 16) {
+	return tokens.map(({ name, min, max }: Token) => {
 		if (min === max) {
 			return `${min / rootSize}rem`
 		}

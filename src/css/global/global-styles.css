@@ -8,7 +8,7 @@ body {
 	@apply text-step-0 leading-standard font-base text-dark bg-light;
 }
 
-[aria-current="page"] {
+[aria-current='page'] {
 	@apply font-medium;
 }
 
@@ -21,14 +21,14 @@ body {
 	outline-offset: var(--focus-offset, 0.2lh);
 }
 @media (prefers-reduced-motion: no-preference) {
-    @view-transition {
-      navigation: auto;
-    }
-    
-    html {
-      interpolate-size: allow-keywords;
-      &:focus-within {
-        scroll-behavior: smooth;
-      }
-    }
-  }
+	@view-transition {
+		navigation: auto;
+	}
+
+	html {
+		interpolate-size: allow-keywords;
+		&:focus-within {
+			scroll-behavior: smooth;
+		}
+	}
+}

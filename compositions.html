@@ -1,156 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <title>Compositions - CUBE CSS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Layout compositions that create structure and handle responsive behavior in CUBE CSS." />
-    <script type="module" src="src/main.ts" defer></script>
-  </head>
-  <body>
-    <main class="wrapper prose">
-      <header class="repel">
-        <a href="index.html" class="text-step-3/fine text-dark no-underline font-bold">CUBE CSS Design System</a>
-        <nav aria-label="Main navigation">
-          <ul role="list" class="cluster [--gutter:var(--spacing-xs)] p-0">
-            <li><a href="compositions.html" aria-current="page">Compositions</a></li>
-            <li><a href="blocks.html">Blocks</a></li>
-            <li><a href="utilities.html">Utilities</a></li>
-            <li><a href="theme.html">Theme</a></li>
-          </ul>
-        </nav>
-      </header>
-      
-      <section class="flow region" aria-labelledby="intro-heading">
-        <h1 id="intro-heading">Layout Compositions</h1>
-        <p>Compositions are layout patterns that create structure and handle responsive behavior. They provide consistent spacing and flexible layouts that adapt to different screen sizes.</p>
-      </section>
+	<head>
+		<title>Compositions - CUBE CSS</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="Layout compositions that create structure and handle responsive behavior in CUBE CSS."
+		/>
+		<script type="module" src="src/main.ts" defer></script>
+	</head>
+	<body>
+		<main class="wrapper prose">
+			<header class="repel">
+				<a
+					href="index.html"
+					class="text-step-3/fine text-dark font-bold no-underline"
+					>CUBE CSS Design System</a
+				>
+				<nav aria-label="Main navigation">
+					<ul role="list" class="cluster p-0 [--gutter:var(--spacing-xs)]">
+						<li>
+							<a href="compositions.html" aria-current="page">Compositions</a>
+						</li>
+						<li><a href="blocks.html">Blocks</a></li>
+						<li><a href="utilities.html">Utilities</a></li>
+						<li><a href="theme.html">Theme</a></li>
+					</ul>
+				</nav>
+			</header>
 
-      <!-- FLOW COMPOSITION -->
-      <section class="flow region" aria-labelledby="flow-heading">
-        <h2 id="flow-heading">Flow</h2>
-        <p>Flow creates consistent vertical spacing between elements. Each element gets margin-top based on the --flow-space custom property.</p>
-        <div class="flow bg-light border-2 border-primary p-s rounded">
-          <h3>Flow Example</h3>
-          <p>This paragraph has consistent spacing from the heading above.</p>
-          <p>This paragraph also has the same spacing, creating visual rhythm.</p>
-          <p>The spacing is controlled by the --flow-space variable.</p>
-        </div>
-      </section>
+			<section class="flow region" aria-labelledby="intro-heading">
+				<h1 id="intro-heading">Layout Compositions</h1>
+				<p>
+					Compositions are layout patterns that create structure and handle
+					responsive behavior. They provide consistent spacing and flexible
+					layouts that adapt to different screen sizes.
+				</p>
+			</section>
 
-      <!-- SWITCHER COMPOSITION -->
-      <section class="flow region" aria-labelledby="switcher-heading">
-        <h2 id="switcher-heading">Switcher</h2>
-        <p>Switcher allows 2 items to sit side by side until there's not enough space, then they stack.</p>
-        <div class="switcher bg-light border-2 border-primary p-s rounded">
-          <div class="bg-primary text-light p-s rounded">
-            <h3>Left Item</h3>
-            <p>This item will sit next to the right item on larger screens and stack on smaller ones.</p>
-          </div>
-          <div class="bg-light border-2 border-primary p-s rounded">
-            <h3>Right Item</h3>
-            <p>This demonstrates the switcher's responsive behavior.</p>
-          </div>
-        </div>
-      </section>
+			<!-- FLOW COMPOSITION -->
+			<section class="flow region" aria-labelledby="flow-heading">
+				<h2 id="flow-heading">Flow</h2>
+				<p>
+					Flow creates consistent vertical spacing between elements. Each
+					element gets margin-top based on the --flow-space custom property.
+				</p>
+				<div class="flow bg-light border-primary p-s rounded border-2">
+					<h3>Flow Example</h3>
+					<p>This paragraph has consistent spacing from the heading above.</p>
+					<p>
+						This paragraph also has the same spacing, creating visual rhythm.
+					</p>
+					<p>The spacing is controlled by the --flow-space variable.</p>
+				</div>
+			</section>
 
-      <!-- CLUSTER COMPOSITION -->
-      <section class="flow region" aria-labelledby="cluster-heading">
-        <h2 id="cluster-heading">Cluster</h2>
-        <p>Cluster distributes items with consistent spacing, regardless of their size.</p>
-        <div class="cluster [--gutter:var(--spacing-s)] bg-light border-2 border-primary p-s rounded">
-          <button class="button">Button 1</button>
-          <button class="button">Button 2</button>
-          <button class="button">Button 3</button>
-          <span class="button" data-button-variant="secondary">Tag</span>
-          <a href="#" class="text-primary underline">Link</a>
-        </div>
-      </section>
+			<!-- SWITCHER COMPOSITION -->
+			<section class="flow region" aria-labelledby="switcher-heading">
+				<h2 id="switcher-heading">Switcher</h2>
+				<p>
+					Switcher allows 2 items to sit side by side until there's not enough
+					space, then they stack.
+				</p>
+				<div class="switcher bg-light border-primary p-s rounded border-2">
+					<div class="bg-primary text-light p-s rounded">
+						<h3>Left Item</h3>
+						<p>
+							This item will sit next to the right item on larger screens and
+							stack on smaller ones.
+						</p>
+					</div>
+					<div class="bg-light border-primary p-s rounded border-2">
+						<h3>Right Item</h3>
+						<p>This demonstrates the switcher's responsive behavior.</p>
+					</div>
+				</div>
+			</section>
 
-      <!-- GRID COMPOSITION -->
-      <section class="flow region" aria-labelledby="grid-heading">
-        <h2 id="grid-heading">Grid</h2>
-        <p>Auto-fill grid that creates responsive columns with configurable item sizes.</p>
-        <div class="grid [--grid-min-item-size:12rem] [&_h3]:mt-0 bg-light border-2 border-primary p-s rounded">
-          <div class="bg-primary text-light p-s rounded">
-            <h3>Grid Item 1</h3>
-            <p>This grid automatically adjusts the number of columns based on available space.</p>
-          </div>
-          <div class="bg-light border-2 border-primary p-s rounded">
-            <h3>Grid Item 2</h3>
-            <p>Each item has a minimum size defined by --grid-min-item-size.</p>
-          </div>
-          <div class="bg-primary text-light p-s rounded">
-            <h3>Grid Item 3</h3>
-            <p>The grid uses auto-fill to create as many columns as possible.</p>
-          </div>
-          <div class="bg-light border-2 border-primary p-s rounded">
-            <h3>Grid Item 4</h3>
-            <p>Items grow to fill available space while maintaining minimum size.</p>
-          </div>
-        </div>
-        
-        <h3>Grid Halves Layout</h3>
-        <div class="grid [&_h4]:mt-0 bg-light border-2 border-primary p-s rounded" data-layout="halves">
-          <div class="bg-primary text-light p-s rounded">
-            <h4>Left Half</h4>
-            <p>This grid uses the halves layout for a 50/50 split.</p>
-          </div>
-          <div class="bg-light border-2 border-primary p-s rounded">
-            <h4>Right Half</h4>
-            <p>Perfect for two-column layouts that stack on mobile.</p>
-          </div>
-        </div>
-      </section>
+			<!-- CLUSTER COMPOSITION -->
+			<section class="flow region" aria-labelledby="cluster-heading">
+				<h2 id="cluster-heading">Cluster</h2>
+				<p>
+					Cluster distributes items with consistent spacing, regardless of their
+					size.
+				</p>
+				<div
+					class="cluster bg-light border-primary p-s rounded border-2 [--gutter:var(--spacing-s)]"
+				>
+					<button class="button">Button 1</button>
+					<button class="button">Button 2</button>
+					<button class="button">Button 3</button>
+					<span class="button" data-button-variant="secondary">Tag</span>
+					<a href="#" class="text-primary underline">Link</a>
+				</div>
+			</section>
 
-      <!-- SIDEBAR COMPOSITION -->
-      <section class="flow region" aria-labelledby="sidebar-heading">
-        <h2 id="sidebar-heading">Sidebar</h2>
-        <p>Sidebar creates a flexible main content area with a fixed-width sidebar.</p>
-        <div class="sidebar [--sidebar-target-width:15rem] [&_h3]:mt-0 bg-light border-2 border-primary p-s rounded">
-          <aside class="bg-primary text-light p-s rounded">
-            <h3>Sidebar</h3>
-            <p>This sidebar has a fixed width and will stack on smaller screens.</p>
-            <ul>
-              <li>Navigation item 1</li>
-              <li>Navigation item 2</li>
-              <li>Navigation item 3</li>
-            </ul>
-          </aside>
-          <main class="bg-light border-2 border-primary p-s rounded">
-            <h3>Main Content</h3>
-            <p>This is the main content area that takes up the remaining space. It will grow to fill available space while the sidebar maintains its fixed width.</p>
-            <p>On smaller screens, the sidebar will stack above or below the main content depending on the available space.</p>
-          </main>
-        </div>
-      </section>
+			<!-- GRID COMPOSITION -->
+			<section class="flow region" aria-labelledby="grid-heading">
+				<h2 id="grid-heading">Grid</h2>
+				<p>
+					Auto-fill grid that creates responsive columns with configurable item
+					sizes.
+				</p>
+				<div
+					class="bg-light border-primary p-s grid rounded border-2 [--grid-min-item-size:12rem] [&_h3]:mt-0"
+				>
+					<div class="bg-primary text-light p-s rounded">
+						<h3>Grid Item 1</h3>
+						<p>
+							This grid automatically adjusts the number of columns based on
+							available space.
+						</p>
+					</div>
+					<div class="bg-light border-primary p-s rounded border-2">
+						<h3>Grid Item 2</h3>
+						<p>Each item has a minimum size defined by --grid-min-item-size.</p>
+					</div>
+					<div class="bg-primary text-light p-s rounded">
+						<h3>Grid Item 3</h3>
+						<p>
+							The grid uses auto-fill to create as many columns as possible.
+						</p>
+					</div>
+					<div class="bg-light border-primary p-s rounded border-2">
+						<h3>Grid Item 4</h3>
+						<p>
+							Items grow to fill available space while maintaining minimum size.
+						</p>
+					</div>
+				</div>
 
-      <!-- REPEL COMPOSITION -->
-      <section class="flow region" aria-labelledby="repel-heading">
-        <h2 id="repel-heading">Repel</h2>
-        <p>Repel pushes items away from each other with space-between, stacking on small viewports.</p>
-        <div class="repel bg-light border-2 [&_h3]:mt-0 border-primary p-s rounded">
-          <div>
-            <h3>Left Item</h3>
-            <p>This item is pushed to the left.</p>
-          </div>
-          <div>
-            <h3>Right Item</h3>
-            <p>This item is pushed to the right.</p>
-          </div>
-        </div>
-        
-        <h3>No Wrap Repel</h3>
-        <div class="repel bg-light border-2 [&_h4]:mt-0 border-primary p-s rounded" data-nowrap>
-          <div>
-            <h4>No Wrap Item 1</h4>
-            <p>This repel has data-nowrap to prevent wrapping.</p>
-          </div>
-          <div>
-            <h4>No Wrap Item 2</h4>
-            <p>Items will stay on the same line even on small screens.</p>
-          </div>
-        </div>
-      </section>
-    </main>
-  </body>
+				<h3>Grid Halves Layout</h3>
+				<div
+					class="bg-light border-primary p-s grid rounded border-2 [&_h4]:mt-0"
+					data-layout="halves"
+				>
+					<div class="bg-primary text-light p-s rounded">
+						<h4>Left Half</h4>
+						<p>This grid uses the halves layout for a 50/50 split.</p>
+					</div>
+					<div class="bg-light border-primary p-s rounded border-2">
+						<h4>Right Half</h4>
+						<p>Perfect for two-column layouts that stack on mobile.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- SIDEBAR COMPOSITION -->
+			<section class="flow region" aria-labelledby="sidebar-heading">
+				<h2 id="sidebar-heading">Sidebar</h2>
+				<p>
+					Sidebar creates a flexible main content area with a fixed-width
+					sidebar.
+				</p>
+				<div
+					class="sidebar bg-light border-primary p-s rounded border-2 [--sidebar-target-width:15rem] [&_h3]:mt-0"
+				>
+					<aside class="bg-primary text-light p-s rounded">
+						<h3>Sidebar</h3>
+						<p>
+							This sidebar has a fixed width and will stack on smaller screens.
+						</p>
+						<ul>
+							<li>Navigation item 1</li>
+							<li>Navigation item 2</li>
+							<li>Navigation item 3</li>
+						</ul>
+					</aside>
+					<main class="bg-light border-primary p-s rounded border-2">
+						<h3>Main Content</h3>
+						<p>
+							This is the main content area that takes up the remaining space.
+							It will grow to fill available space while the sidebar maintains
+							its fixed width.
+						</p>
+						<p>
+							On smaller screens, the sidebar will stack above or below the main
+							content depending on the available space.
+						</p>
+					</main>
+				</div>
+			</section>
+
+			<!-- REPEL COMPOSITION -->
+			<section class="flow region" aria-labelledby="repel-heading">
+				<h2 id="repel-heading">Repel</h2>
+				<p>
+					Repel pushes items away from each other with space-between, stacking
+					on small viewports.
+				</p>
+				<div
+					class="repel bg-light border-primary p-s rounded border-2 [&_h3]:mt-0"
+				>
+					<div>
+						<h3>Left Item</h3>
+						<p>This item is pushed to the left.</p>
+					</div>
+					<div>
+						<h3>Right Item</h3>
+						<p>This item is pushed to the right.</p>
+					</div>
+				</div>
+
+				<h3>No Wrap Repel</h3>
+				<div
+					class="repel bg-light border-primary p-s rounded border-2 [&_h4]:mt-0"
+					data-nowrap
+				>
+					<div>
+						<h4>No Wrap Item 1</h4>
+						<p>This repel has data-nowrap to prevent wrapping.</p>
+					</div>
+					<div>
+						<h4>No Wrap Item 2</h4>
+						<p>Items will stay on the same line even on small screens.</p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
 </html>

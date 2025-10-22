@@ -1,20 +1,29 @@
-import { env } from "node:process"
+import { resolve } from 'node:path'
+import { env } from 'node:process'
 
-import tailwindcss from "@tailwindcss/vite"
-import { defineConfig } from "vite"
+import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
 	plugins: [tailwindcss()],
 	// Use BASE_PATH for GitHub Pages subpath (e.g., "/<repo>/"); defaults to "/" locally
-	base: env.BASE_PATH || "/",
+	base: env.BASE_PATH || '/',
+	resolve: {
+		alias: {
+			'@': resolve(__dirname, './src'),
+			'@/design-tokens': resolve(__dirname, './src/design-tokens'),
+			'@/css': resolve(__dirname, './src/css'),
+			'@/scripts': resolve(__dirname, './scripts'),
+		},
+	},
 	build: {
 		rollupOptions: {
 			input: {
-				main: "index.html",
-				utilities: "utilities.html",
-				blocks: "blocks.html",
-				compositions: "compositions.html",
-				theme: "theme.html",
+				main: 'index.html',
+				utilities: 'utilities.html',
+				blocks: 'blocks.html',
+				compositions: 'compositions.html',
+				theme: 'theme.html',
 			},
 		},
 	},

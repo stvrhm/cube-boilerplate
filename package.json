@@ -1,35 +1,42 @@
 {
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview",
-		"theme": "ts-node src/css-utils/create-theme.ts -- --output src/css/theme.css ",
-		"format:all": "biome format --write",
-		"lint:all": "biome lint --write"
-	},
-	"keywords": [
-		"css",
-		"tailwindcss",
-		"design tokens",
-		"theme",
-		"vite",
-		"typescript",
-		"utility classes",
-		"responsive design",
-		"frontend",
-		"web development"
-	],
-	"author": "Steve Rehm",
-	"license": "ISC",
-	"type": "module",
-	"devDependencies": {
-		"@tailwindcss/vite": "^4.1.14",
-		"slugify": "^1.6.6",
-		"tailwindcss": "^4.1.14",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.9.3",
-		"vite": "^7.1.11",
-		"@biomejs/biome": "2.2.6",
-		"@types/node": "^24.8.1"
-	}
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "theme": "tsx scripts/css-utils/create-theme.ts --output src/css/theme.css",
+    "format:all": "prettier --write .",
+    "lint:all": "eslint . --fix"
+  },
+  "keywords": [
+    "css",
+    "tailwindcss",
+    "design tokens",
+    "theme",
+    "vite",
+    "typescript",
+    "utility classes",
+    "responsive design",
+    "frontend",
+    "web development"
+  ],
+  "author": "Steve Rehm",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@epic-web/config": "^1.21.3",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/node": "^24.8.1",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "slugify": "^1.6.6",
+    "tailwindcss": "^4.1.14",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2",
+    "vite": "^7.1.11"
+  },
+  "prettier": "@epic-web/config/prettier"
 }

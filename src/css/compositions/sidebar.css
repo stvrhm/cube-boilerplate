@@ -29,6 +29,6 @@ EXCEPTIONS
 }
 
 .sidebar > :last-child {
-	@apply basis-0 grow-999;
+	@apply grow-999 basis-0;
 	min-width: var(--sidebar-content-min-width, 50%);
 }

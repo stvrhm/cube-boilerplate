@@ -3,7 +3,7 @@
 }
 
 .prose :is(h1, h2, h3) {
-	@apply hyphens-auto wrap-anywhere md:hyphens-unset md:wrap-unset;
+	@apply md:hyphens-unset md:wrap-unset wrap-anywhere hyphens-auto;
 }
 
 .prose :is(p, li, dl, figcaption, blockquote) {

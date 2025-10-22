@@ -11,14 +11,14 @@
 	</head>
 	<body>
 		<main class="wrapper">
-			<header class="repel py-s">
+			<header class="repel py-s [--gutter:var(--spacing-xs)]">
 				<a
 					href="index.html"
 					class="text-step-3/fine text-dark font-bold no-underline"
 					>CUBE CSS Design System</a
 				>
 				<nav aria-label="Main navigation">
-					<ul role="list" class="cluster p-0 [--gutter:var(--spacing-xs)]">
+					<ul role="list" class="cluster m-0 p-0 [--gutter:var(--spacing-xs)]">
 						<li><a href="compositions.html">Compositions</a></li>
 						<li><a href="blocks.html">Blocks</a></li>
 						<li><a href="utilities.html" aria-current="page">Utilities</a></li>
@@ -45,8 +45,8 @@
 						<h2 id="region-heading">Region Utility</h2>
 						<p>
 							The region utility provides consistent block padding for page
-							sections. It applies padding-block using the --region-space custom
-							property.
+							sections. It applies padding-block using the
+							<code class="text-step-00">--region-space</code> custom property.
 						</p>
 
 						<div class="region bg-primary text-light rounded">
@@ -73,18 +73,18 @@
 						<h2 id="customization-heading">Customizing Region Spacing</h2>
 						<p>
 							You can customize the region utility by overriding the
-							--region-space custom property:
+							<code class="text-step-00">--region-space</code> custom property:
 						</p>
 
 						<div
-							class="region bg-light border-primary rounded border-2 [--region-space:var(--spacing-s)]"
+							class="regio border-primary bg-secondary/5 border-t-2 border-b-2 [--region-space:var(--spacing-s)]"
 						>
 							<h3>Small Region Spacing</h3>
 							<p>This region uses smaller spacing.</p>
 						</div>
 
 						<div
-							class="region bg-light border-primary rounded border-2 [--region-space:var(--spacing-3xl)]"
+							class="regionborder-primary bg-secondary/5 border-t-2 border-b-2 [--region-space:var(--spacing-3xl)]"
 						>
 							<h3>Large Region Spacing</h3>
 							<p>This region uses larger spacing.</p>

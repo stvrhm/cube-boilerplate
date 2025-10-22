@@ -18,7 +18,7 @@ to change how empty grid tracks are handled */
 	@apply grid;
 	grid-template-columns: repeat(
 		var(--grid-placement, auto-fill),
-		minmax(var(--grid-min-item-size, 16rem), 1fr)
+		minmax(var(--grid-min-item-size, min(16rem, 100%)), 1fr)
 	);
 	gap: var(--gutter, var(--spacing-s-l));
 }
@@ -26,11 +26,15 @@ to change how empty grid tracks are handled */
 /* A split 50/50 layout */
 .grid[data-layout='halves'] {
 	--grid-placement: auto-fit;
-	--grid-min-item-size: clamp(16rem, 50vw, 33rem);
+	--grid-min-item-size: clamp(16rem, 50vw, min(33rem, 100%));
 }
 
 /* Three column grid layout */
 .grid[data-layout='thirds'] {
 	--grid-placement: auto-fit;
-	--grid-min-item-size: clamp(16rem, 33%, 20rem);
+	--grid-min-item-size: clamp(16rem, 33%, min(20rem, 100%));
+}
+
+.grid[data-item-height='equal'] {
+	grid-auto-rows: 1fr;
 }

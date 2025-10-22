@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<main class="wrapper">
-			<header class="repel py-s">
+			<header class="repel py-s [--gutter:var(--spacing-xs)]">
 				<a
 					href="index.html"
 					aria-current="page"
@@ -19,7 +19,7 @@
 					>CUBE CSS Design System</a
 				>
 				<nav aria-label="Main navigation">
-					<ul role="list" class="cluster p-0 [--gutter:var(--spacing-xs)]">
+					<ul role="list" class="cluster m-0 p-0 [--gutter:var(--spacing-xs)]">
 						<li><a href="compositions.html">Compositions</a></li>
 						<li><a href="blocks.html">Blocks</a></li>
 						<li><a href="utilities.html">Utilities</a></li>
@@ -29,19 +29,22 @@
 			</header>
 
 			<section class="flow region" aria-labelledby="welcome-heading">
-				<h2 id="welcome-heading">Welcome to CUBE CSS</h2>
+				<h1 id="welcome-heading">Welcome to CUBE CSS</h1>
 				<p>
 					A comprehensive CSS methodology that focuses on Composition, Utility,
-					Block, and Exception (CUBE) principles for building scalable and
-					maintainable stylesheets.
-					<a href="https://cube.fyi/" aria-label="Read the flipping manual"
-						>RTFM</a
-					>
+					Block, and Exception principles for building scalable and maintainable
+					stylesheets.
+				</p>
+				<p>
+					Read the
+					<a href="https://cube.fyi/">CUBE CSS methodology documentation</a> for
+					more information.
 				</p>
 			</section>
+
 			<section class="flow" aria-labelledby="explore-heading">
 				<h2 id="explore-heading">Explore the System</h2>
-				<div class="grid [--grid-min-item-size:min(20rem,100%)]">
+				<div class="grid" data-item-height="equal">
 					<article
 						class="flow border-primary p-s rounded border-2"
 						aria-labelledby="compositions-heading"

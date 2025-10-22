@@ -11,14 +11,14 @@
 	</head>
 	<body>
 		<main class="wrapper">
-			<header class="repel py-s">
+			<header class="repel py-s [--gutter:var(--spacing-xs)]">
 				<a
 					href="index.html"
 					class="text-step-3/fine text-dark font-bold no-underline"
 					>CUBE CSS Design System</a
 				>
 				<nav aria-label="Main navigation">
-					<ul role="list" class="cluster p-0 [--gutter:var(--spacing-xs)]">
+					<ul role="list" class="cluster m-0 p-0 [--gutter:var(--spacing-xs)]">
 						<li><a href="compositions.html">Compositions</a></li>
 						<li><a href="blocks.html" aria-current="page">Blocks</a></li>
 						<li><a href="utilities.html">Utilities</a></li>
@@ -40,13 +40,15 @@
 				<h2 id="prose-heading">Prose Block</h2>
 				<p>
 					The prose block provides optimized spacing for reading content. It
-					sets a custom --flow-space for better reading experience.
+					sets a custom <code class="text-step-00">--flow-space</code> for
+					better reading experience.
 				</p>
 
 				<div class="flow prose bg-light border-primary p-s rounded border-2">
 					<h3>Prose Content Example</h3>
 					<p>
-						This content uses the prose block, which sets a custom --flow-space
+						This content uses the prose block, which sets a custom
+						<code class="text-step-00">--flow-space</code>
 						for better reading experience. The prose block is designed to make
 						text content more readable with appropriate spacing.
 					</p>

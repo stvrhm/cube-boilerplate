@@ -11,14 +11,14 @@
 	</head>
 	<body>
 		<main class="wrapper prose">
-			<header class="repel py-s">
+			<header class="repel py-s [--gutter:var(--spacing-xs)]">
 				<a
 					href="index.html"
 					class="text-step-3/fine text-dark font-bold no-underline"
 					>CUBE CSS Design System</a
 				>
 				<nav aria-label="Main navigation">
-					<ul role="list" class="cluster p-0 [--gutter:var(--spacing-xs)]">
+					<ul role="list" class="cluster m-0 p-0 [--gutter:var(--spacing-xs)]">
 						<li><a href="compositions.html">Compositions</a></li>
 						<li><a href="blocks.html">Blocks</a></li>
 						<li><a href="utilities.html">Utilities</a></li>
@@ -50,22 +50,22 @@
 						<div class="grid">
 							<div class="bg-light border-primary p-s rounded border-2">
 								<h3>Light</h3>
-								<p><code>var(--color-light)</code></p>
+								<p><code class="text-step-00">var(--color-light)</code></p>
 								<p>Primary background color</p>
 							</div>
 							<div class="bg-dark text-light p-s rounded">
 								<h3>Dark</h3>
-								<p><code>var(--color-dark)</code></p>
+								<p><code class="text-step-00">var(--color-dark)</code></p>
 								<p>Primary text color</p>
 							</div>
 							<div class="bg-primary text-light p-s rounded">
 								<h3>Primary</h3>
-								<p><code>var(--color-primary)</code></p>
+								<p><code class="text-step-00">var(--color-primary)</code></p>
 								<p>Brand/accent color</p>
 							</div>
 							<div class="bg-secondary text-primary p-s rounded">
 								<h3>Secondary</h3>
-								<p><code>var(--color-secondary)</code></p>
+								<p><code class="text-step-00">var(--color-secondary)</code></p>
 								<p>Secondary color</p>
 							</div>
 						</div>
@@ -92,8 +92,8 @@
 								<p class="text-step-00">CUBE CSS totally rules</p>
 								<p class="text-step-0">CUBE CSS totally rules</p>
 								<p class="text-step-1">CUBE CSS totally rules</p>
-								<p class="text-step-2">CUBE CSS totally rules</p>
-								<p class="text-step-3">CUBE CSS totally rules</p>
+								<p class="text-step-2/fine">CUBE CSS totally rules</p>
+								<p class="text-step-3/fine">CUBE CSS totally rules</p>
 								<p class="text-step-4/fine">CUBE CSS totally rules</p>
 								<p class="text-step-5/fine">CUBE CSS totally rules</p>
 							</div>
@@ -111,12 +111,26 @@
 								class="flow prose bg-light border-primary p-s rounded border-2"
 							>
 								<h3>Line Heights</h3>
-								<p class="leading-flat bg-secondary/15">Flat leading (1)</p>
-								<p class="leading-fine bg-secondary/15">Fine leading (1.15)</p>
-								<p class="leading-standard bg-secondary/15">
+								<p
+									class="leading-flat bg-secondary/15 border-secondary border-t-2 border-b-2"
+								>
+									Flat leading (1)
+								</p>
+								<p
+									class="leading-fine bg-secondary/15 border-secondary border-t-2 border-b-2"
+								>
+									Fine leading (1.15)
+								</p>
+								<p
+									class="leading-standard bg-secondary/15 border-secondary border-t-2 border-b-2"
+								>
 									Standard leading (1.5)
 								</p>
-								<p class="bg-secondary/15 leading-loose">Loose leading (1.7)</p>
+								<p
+									class="bg-secondary/15 border-secondary border-t-2 border-b-2 leading-loose"
+								>
+									Loose leading (1.7)
+								</p>
 							</div>
 						</div>
 					</section>
@@ -134,38 +148,34 @@
 							responsively.
 						</p>
 
-						<div class="grid" data-layout="halves">
+						<div class="grid" data-layout="thirds">
 							<div
 								class="flow bg-light border-primary p-s prose rounded border-2"
 							>
 								<h3>Spacing Scale</h3>
 								<div>
 									<div class="bg-primary h-3xs w-full rounded"></div>
-									<p><code>--spacing-3xs</code></p>
+									<p><code class="text-step-00">--spacing-3xs</code></p>
 								</div>
-
 								<div>
 									<div class="bg-primary h-2xs w-full rounded"></div>
-									<p><code>--spacing-2xs</code></p>
+									<p><code class="text-step-00">--spacing-2xs</code></p>
 								</div>
-
 								<div>
 									<div class="bg-primary h-xs w-full rounded"></div>
-									<p><code>--spacing-xs</code></p>
+									<p><code class="text-step-00">--spacing-xs</code></p>
 								</div>
 								<div>
 									<div class="bg-primary h-s w-full rounded"></div>
-									<p><code>--spacing-s</code></p>
+									<p><code class="text-step-00">--spacing-s</code></p>
 								</div>
-
 								<div>
 									<div class="bg-primary h-m w-full rounded"></div>
-									<p><code>--spacing-m</code></p>
+									<p><code class="text-step-00">--spacing-m</code></p>
 								</div>
-
 								<div>
 									<div class="bg-primary h-l w-full rounded"></div>
-									<p><code>--spacing-l</code></p>
+									<p><code class="text-step-00">--spacing-l</code></p>
 								</div>
 							</div>
 
@@ -175,22 +185,69 @@
 								<h3>Larger Spacing</h3>
 								<div>
 									<div class="bg-primary h-xl w-full rounded"></div>
-									<p><code>--spacing-xl</code></p>
+									<p><code class="text-step-00">--spacing-xl</code></p>
 								</div>
-
 								<div>
 									<div class="bg-primary h-2xl w-full rounded"></div>
-									<p><code>--spacing-2xl</code></p>
+									<p><code class="text-step-00">--spacing-2xl</code></p>
 								</div>
-
 								<div>
 									<div class="bg-primary h-3xl w-full rounded"></div>
-									<p><code>--spacing-3xl</code></p>
+									<p><code class="text-step-00">--spacing-3xl</code></p>
 								</div>
-
 								<div>
 									<div class="bg-primary h-4xl w-full rounded"></div>
-									<p><code>--spacing-4xl</code></p>
+									<p><code class="text-step-00">--spacing-4xl</code></p>
+								</div>
+							</div>
+
+							<div
+								class="flow bg-light border-primary p-s prose rounded border-2"
+							>
+								<h3>Spacing Pairs</h3>
+								<div>
+									<div class="bg-primary h-3xs-2xs w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-3xs-2xs</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-2xs-xs w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-2xs-xs</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-xs-s w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-xs-s</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-s-m w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-s-m</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-s-l w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-s-l</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-s-xl w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-s-xl</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-m-l w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-m-l</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-l-xl w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-l-xl</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-xl-2xl w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-xl-2xl</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-2xl-3xl w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-2xl-3xl</code></p>
+								</div>
+								<div>
+									<div class="bg-primary h-3xl-4xl w-full rounded"></div>
+									<p><code class="text-step-00">--spacing-3xl-4xl</code></p>
 								</div>
 							</div>
 						</div>

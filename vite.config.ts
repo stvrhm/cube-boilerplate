@@ -3,9 +3,19 @@ import { env } from 'node:process'
 
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
+import themePlugin from './plugins/theme'
 
 export default defineConfig({
-	plugins: [tailwindcss()],
+	plugins: [
+		tailwindcss(),
+		themePlugin({
+			tokensGlob: 'src/design-tokens/**/*.json',
+			outputPath: 'src/css/theme.css',
+			outputDir: 'src/css',
+			outputFile: 'theme.css',
+			tokensDir: 'src/design-tokens',
+		}),
+	],
 	// Use BASE_PATH for GitHub Pages subpath (e.g., "/<repo>/"); defaults to "/" locally
 	base: env.BASE_PATH || '/',
 	resolve: {

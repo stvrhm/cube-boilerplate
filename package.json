@@ -3,7 +3,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "theme": "tsx scripts/css-utils/create-theme.ts --output src/css/theme.css",
+    "theme": "tsx scripts/css-utils/create-theme.ts --output src/css/theme.css --tokens src/design-tokens --root-size 16",
     "format:all": "prettier --write .",
     "lint:all": "eslint . --fix"
   },
@@ -22,6 +22,10 @@
   "author": "Steve Rehm",
   "license": "ISC",
   "type": "module",
+  "dependencies": {
+    "tiny-invariant": "^1.3.3",
+    "zod": "^4.1.12"
+  },
   "devDependencies": {
     "@epic-web/config": "^1.21.3",
     "@tailwindcss/vite": "^4.1.14",
@@ -38,5 +42,12 @@
     "typescript-eslint": "^8.46.2",
     "vite": "^7.1.11"
   },
-  "prettier": "@epic-web/config/prettier"
+  "prettier": "@epic-web/config/prettier",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild",
+      "unrs-resolver"
+    ]
+  }
 }

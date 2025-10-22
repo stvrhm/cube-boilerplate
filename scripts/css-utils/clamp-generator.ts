@@ -1,15 +1,18 @@
-import viewports from '@/design-tokens/viewports.json' with { type: 'json' }
+import {
+	type RangeToken,
+	type ClampResultToken,
+	type ViewportTokens,
+	DEFAULT_ROOT_SIZE,
+} from './token-types'
 
-interface Token {
-	name: string
-	min: number
-	max: number
-}
-
-function clampGenerator(tokens: Token[], rootSize = 16) {
-	return tokens.map(({ name, min, max }: Token) => {
+function clampGenerator(
+	tokens: RangeToken[],
+	viewport: ViewportTokens,
+	rootSize = DEFAULT_ROOT_SIZE,
+) {
+	return tokens.map(({ name, min, max }: RangeToken): ClampResultToken => {
 		if (min === max) {
-			return `${min / rootSize}rem`
+			return { name, value: `${min / rootSize}rem` }
 		}
 
 		// Convert the min and max sizes to rems
@@ -17,8 +20,8 @@ function clampGenerator(tokens: Token[], rootSize = 16) {
 		const maxSize = max / rootSize
 
 		// Convert the pixel viewport sizes into rems
-		const minViewport = viewports.min / rootSize
-		const maxViewport = viewports.max / rootSize
+		const minViewport = viewport.min / rootSize
+		const maxViewport = viewport.max / rootSize
 
 		// Slope and intersection allow us to have a fluid value but also keep that sensible
 		const slope = (maxSize - minSize) / (maxViewport - minViewport)

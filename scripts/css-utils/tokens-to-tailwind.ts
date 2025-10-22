@@ -1,48 +1,24 @@
 import slugify from 'slugify'
 
-interface BaseToken {
-	name: string
-}
+type MappableToken = { name: string; value: string | string[] }
 
-interface ColorToken extends BaseToken {
-	value: string
-}
-
-interface FontToken extends BaseToken {
-	description?: string
-	value: string[]
-}
-
-interface SpacingToken extends BaseToken {
-	min: number
-	max: number
-}
-
-interface WeightToken extends BaseToken {
-	value: number
-}
-
-type Token = ColorToken | FontToken | SpacingToken | WeightToken | string
-
-function tokensToTailwind(tokens: Token[]): Record<string, string> {
+function tokensToTailwind<T extends MappableToken>(
+	tokens: T[],
+): Record<string, string> {
 	const nameSlug = (text: string) => slugify(text, { lower: true })
 	const response: Record<string, string> = {}
 
-	tokens.forEach((token) => {
-		if (typeof token === 'string') {
-			response[nameSlug(token)] = token
-		} else if ('value' in token) {
-			if (Array.isArray(token.value)) {
-				// Font tokens have array values
-				response[nameSlug(token.name)] = token.value.join(', ')
-			} else {
-				response[nameSlug(token.name)] = String(token.value)
-			}
-		} else if ('min' in token && 'max' in token) {
-			// Spacing tokens - this will be handled by clampGenerator
-			response[nameSlug(token.name)] = `${token.min}px`
+	for (const token of tokens) {
+		const key = nameSlug(token.name)
+		if (key in response) {
+			throw new Error(`Duplicate token slug detected: ${key}`)
 		}
-	})
+		if (Array.isArray(token.value)) {
+			response[key] = token.value.join(', ')
+		} else {
+			response[key] = String(token.value)
+		}
+	}
 
 	return response
 }

@@ -23,26 +23,26 @@ export default function themePlugin(options: {
 			root = config.root
 		},
 		async buildStart() {
-			invariant(
-				tokensGlob,
-				'💅 tokensGlob must be provided via vite config',
-			)
+			invariant(tokensGlob, '💅 tokensGlob must be provided via vite config')
 			const hasOutput = Boolean(outputPath || (outputDir && outputFile))
 			invariant(
 				hasOutput,
 				'💅 provide outputPath OR both outputDir and outputFile',
 			)
-			const finalOutput = resolve(root, outputPath ?? resolve(outputDir!, outputFile!))
+			const finalOutput = resolve(
+				root,
+				outputPath ?? resolve(outputDir!, outputFile!),
+			)
 			await writeThemeToFile({ outputPath: finalOutput, tokensDir })
 		},
 		configureServer(server: ViteDevServer) {
-			invariant(
-				tokensGlob,
-				'💅 tokensGlob must be provided via vite config',
-			)
+			invariant(tokensGlob, '💅 tokensGlob must be provided via vite config')
 			const absGlob = resolve(root, tokensGlob)
-			const finalOutput = resolve(root, outputPath ?? resolve(outputDir!, outputFile!))
-			
+			const finalOutput = resolve(
+				root,
+				outputPath ?? resolve(outputDir!, outputFile!),
+			)
+
 			// Add the tokens glob to watcher
 			server.watcher.add(absGlob)
 
@@ -51,7 +51,7 @@ export default function themePlugin(options: {
 			const trigger = async (filePath?: string) => {
 				// Skip if the changed file is our output file
 				if (filePath === finalOutput) return
-				
+
 				if (running) {
 					pending = true
 					return
@@ -63,9 +63,13 @@ export default function themePlugin(options: {
 						`💅 theme.css regenerated from tokens → ${finalOutput}`,
 					)
 				} catch (e) {
-					server.config.logger.error(
-						`💅 Theme generation failed: ${e instanceof Error ? e.message : String(e)}`,
-					)
+					const errorMessage = e instanceof Error ? e.message : String(e)
+					// Format multi-line errors properly for better readability
+					const formattedError = errorMessage.includes('\n')
+						? `💅 Theme generation failed:\n${errorMessage}`
+						: `💅 Theme generation failed: ${errorMessage}`
+
+					server.config.logger.error(formattedError)
 				} finally {
 					running = false
 					if (pending) {

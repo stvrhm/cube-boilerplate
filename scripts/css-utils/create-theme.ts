@@ -1,43 +1,19 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { format as prettierFormat } from 'prettier'
-import { prettifyError, ZodError } from 'zod'
-import type * as z from 'zod'
 import clampGenerator from './clamp-generator.ts'
-import { TokenSchema } from './token-schemas'
-import { type AllTokens, DEFAULT_ROOT_SIZE } from './token-types'
+import { TokenSchema } from './schema.ts'
 import tokensToTailwind from './tokens-to-tailwind.ts'
+import { type AllTokens, DEFAULT_ROOT_SIZE } from './types.ts'
+import {
+	getDefaultTokensDir,
+	parseFile,
+	type TokensDir,
+} from './validation.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-
-type TokensDir = string
-
-function loadJson<T = unknown>(tokensDir: TokensDir, fileName: string): T {
-	const filePath = join(tokensDir, fileName)
-	return JSON.parse(readFileSync(filePath, 'utf8')) as T
-}
-
-function getDefaultTokensDir(): string {
-	return join(__dirname, '..', '..', 'src', 'design-tokens')
-}
-
-function parseFile<S extends z.ZodTypeAny>(
-	schema: S,
-	tokensDir: TokensDir,
-	fileName: string,
-): z.infer<S> {
-	try {
-		return schema.parse(loadJson(tokensDir, fileName))
-	} catch (e) {
-		if (e instanceof ZodError) {
-			const pretty = prettifyError(e)
-			throw new Error(`Invalid token file: ${fileName}\n${pretty}`)
-		}
-		throw e
-	}
-}
 
 function loadAllTokens(tokensDir: TokensDir): AllTokens {
 	const colors = parseFile(TokenSchema.Colors, tokensDir, 'colors.json')
@@ -138,9 +114,10 @@ async function writeThemeToFile(
 			? {}
 			: { tokensDir: options.tokensDir, rootSize: options.rootSize },
 	)
-	const fullPath = outputPath.startsWith('/') || outputPath.includes(':') 
-		? outputPath 
-		: join(__dirname, '..', '..', outputPath)
+	const fullPath =
+		outputPath.startsWith('/') || outputPath.includes(':')
+			? outputPath
+			: join(__dirname, '..', '..', outputPath)
 
 	try {
 		const formatted = await prettierFormat(themeContent, { filepath: fullPath })
@@ -244,10 +221,14 @@ Examples:
 		// biome-ignore lint/suspicious/noConsole: CLI output is necessary
 		console.log(`✅ Theme file created successfully at: ${outputPath}`)
 	} catch (error) {
+		const errorMessage = error instanceof Error ? error.message : String(error)
+		// Format multi-line errors properly for better readability
+		const formattedError = errorMessage.includes('\n')
+			? `❌ Failed to create theme file:\n${errorMessage}`
+			: `❌ Failed to create theme file: ${errorMessage}`
+
 		// biome-ignore lint/suspicious/noConsole: CLI output is necessary
-		console.error(
-			`❌ Failed to create theme file: ${error instanceof Error ? error.message : String(error)}`,
-		)
+		console.error(formattedError)
 		process.exit(1)
 	}
 }

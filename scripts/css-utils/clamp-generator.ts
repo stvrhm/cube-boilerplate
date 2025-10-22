@@ -3,7 +3,7 @@ import {
 	type ClampResultToken,
 	type ViewportTokens,
 	DEFAULT_ROOT_SIZE,
-} from './token-types'
+} from './types'
 
 function clampGenerator(
 	tokens: RangeToken[],

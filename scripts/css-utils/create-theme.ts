@@ -1,7 +1,7 @@
-import { writeFileSync } from 'node:fs'
+import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { format as prettierFormat } from 'prettier'
+import { format as prettierFormat, resolveConfig } from 'prettier'
 import clampGenerator from './clamp-generator.ts'
 import { TokenSchema } from './schema.ts'
 import tokensToTailwind from './tokens-to-tailwind.ts'
@@ -102,7 +102,7 @@ type WriteThemeOptions = {
 
 async function writeThemeToFile(
 	options: WriteThemeOptions | string = 'theme.css',
-) {
+): Promise<{ written: boolean; path: string }> {
 	const outputPath =
 		typeof options === 'string' ? options : (options.outputPath ?? 'theme.css')
 	const themeContent = createTheme(
@@ -116,8 +116,30 @@ async function writeThemeToFile(
 			: join(__dirname, '..', '..', outputPath)
 
 	try {
-		const formatted = await prettierFormat(themeContent, { filepath: fullPath })
+		// Resolve Prettier config to ensure consistent formatting with editor
+		const prettierConfig = await resolveConfig(fullPath)
+		const formatted = await prettierFormat(themeContent, {
+			...prettierConfig,
+			filepath: fullPath,
+		})
+		// Skip writing if content is unchanged to avoid mtime churn
+		// Compare without timestamp header since it changes on every generation
+		if (existsSync(fullPath)) {
+			try {
+				const current = readFileSync(fullPath, 'utf8')
+				// Strip timestamp from both versions for comparison
+				const stripTimestamp = (content: string) =>
+					content.replace(
+						/\/\* AUTO-GENERATED .* on \d{4}-\d{2}-\d{2}T[\d:.]+Z — Do NOT edit directly\. \*\//,
+						'/* AUTO-GENERATED */',
+					)
+				if (stripTimestamp(current) === stripTimestamp(formatted)) {
+					return { written: false, path: fullPath }
+				}
+			} catch {}
+		}
 		writeFileSync(fullPath, formatted, 'utf8')
+		return { written: true, path: fullPath }
 	} catch (error) {
 		throw new Error(
 			`Failed to write theme file: ${error instanceof Error ? error.message : String(error)}`,
@@ -209,13 +231,19 @@ Examples:
 			const finalFile = outFile || outputPath
 			outputPath = join(finalDir, finalFile)
 		}
-		await writeThemeToFile({
+		const result = await writeThemeToFile({
 			outputPath,
 			tokensDir: tokensDir || undefined,
 			rootSize,
 		})
 		// biome-ignore lint/suspicious/noConsole: CLI output is necessary
-		console.log(`✅ Theme file created successfully at: ${outputPath}`)
+		if (result.written) {
+			console.log(`✅ Theme file created successfully at: ${result.path}`)
+		} else {
+			console.log(
+				`⏭️  Theme generation skipped (no changes detected) at: ${result.path}`,
+			)
+		}
 	} catch (error) {
 		const errorMessage = error instanceof Error ? error.message : String(error)
 		// Format multi-line errors properly for better readability

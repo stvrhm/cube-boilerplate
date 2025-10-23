@@ -1,4 +1,4 @@
-import { resolve } from 'node:path'
+import { resolve, sep } from 'node:path'
 import invariant from 'tiny-invariant'
 import { type Plugin, type ViteDevServer } from 'vite'
 import { writeThemeToFile } from '../scripts/css-utils/create-theme'
@@ -38,6 +38,7 @@ export default function themePlugin(options: {
 		configureServer(server: ViteDevServer) {
 			invariant(tokensGlob, '💅 tokensGlob must be provided via vite config')
 			const absGlob = resolve(root, tokensGlob)
+			const tokensDirAbs = resolve(root, tokensDir)
 			const finalOutput = resolve(
 				root,
 				outputPath ?? resolve(outputDir!, outputFile!),
@@ -56,13 +57,22 @@ export default function themePlugin(options: {
 					pending = true
 					return
 				}
-				running = true
-				try {
-					await writeThemeToFile({ outputPath: finalOutput, tokensDir })
+			running = true
+			try {
+				const result = await writeThemeToFile({
+					outputPath: finalOutput,
+					tokensDir,
+				})
+				if (result.written) {
 					server.config.logger.info(
 						`💅 theme.css regenerated from tokens → ${finalOutput}`,
 					)
-				} catch (e) {
+				} else {
+					server.config.logger.info(
+						`💅 theme.css generation skipped (no changes detected)`,
+					)
+				}
+			} catch (e) {
 					const errorMessage = e instanceof Error ? e.message : String(e)
 					// Format multi-line errors properly for better readability
 					const formattedError = errorMessage.includes('\n')
@@ -79,10 +89,24 @@ export default function themePlugin(options: {
 				}
 			}
 
+			const shouldHandle = (filePath?: string) => {
+				if (!filePath) return true
+				// Only react to JSON files inside the tokens directory
+				const inTokensDir = filePath.startsWith(tokensDirAbs + sep)
+				const isJson = filePath.endsWith('.json')
+				return inTokensDir && isJson
+			}
+
 			server.watcher
-				.on('add', (filePath) => trigger(filePath))
-				.on('change', (filePath) => trigger(filePath))
-				.on('unlink', (filePath) => trigger(filePath))
+				.on('add', (filePath) => {
+					if (shouldHandle(filePath)) void trigger(filePath).catch(() => {})
+				})
+				.on('change', (filePath) => {
+					if (shouldHandle(filePath)) void trigger(filePath).catch(() => {})
+				})
+				.on('unlink', (filePath) => {
+					if (shouldHandle(filePath)) void trigger(filePath).catch(() => {})
+				})
 
 			// Run once on dev server start
 			void trigger().catch(() => {})

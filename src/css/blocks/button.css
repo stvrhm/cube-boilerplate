@@ -1,6 +1,7 @@
 .button {
 	@apply leading-flat relative inline-flex cursor-pointer items-center border-0 font-bold no-underline hover:brightness-105 active:scale-99;
-	gap: var(--button-gutter, 0.5ch);
+	
+    gap: var(--button-gutter, 0.5ch);
 	padding-inline: var(--button-x-padding, 1.75ex);
 	padding-block: var(--button-y-padding, 1.25ex);
 	background-color: var(--button-bg, var(--color-primary));
@@ -8,5 +9,6 @@
 }
 
 .button[data-button-variant='secondary'] {
-	@apply [--button-bg:var(--color-secondary)] [--button-text:var(--color-primary)];
+    --button-bg: var(--color-secondary);
+    --button-text: var(--color-primary);
 }

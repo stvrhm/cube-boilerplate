@@ -1,5 +1,10 @@
 .button {
-	@apply leading-flat relative inline-flex cursor-pointer items-center gap-[var(--button-gutter,0.5ch)] border-0 bg-[var(--button-bg,var(--color-primary))] px-[var(--button-x-padding,1.75ex)] py-[var(--button-y-padding,1.25ex)] font-bold text-[color:var(--button-text,var(--color-light))] no-underline hover:brightness-105 active:scale-99;
+	@apply leading-flat relative inline-flex cursor-pointer items-center border-0 font-bold no-underline hover:brightness-105 active:scale-99;
+	gap: var(--button-gutter, 0.5ch);
+	padding-inline: var(--button-x-padding, 1.75ex);
+	padding-block: var(--button-y-padding, 1.25ex);
+	background-color: var(--button-bg, var(--color-primary));
+	color: var(--button-text, var(--color-light));
 }
 
 .button[data-button-variant='secondary'] {
